@@ -923,7 +923,7 @@ def evolve_modes_batched( *, tau_max, tau_out, param, kmodes,
 
 
 
-def evolve_perturbations( *, param, aexp_out, kmin : float, kmax : float, num_k : int, kmodes = None,
+def evolve_perturbations( *, param, aexp_out, kmin : float=None, kmax : float=None, num_k : int=None, kmodes = None,
                          lmaxg : int = 11, lmaxgp : int = 11, lmaxr : int = 11, lmaxnu : int = 8,
                          nqmax : int = 3, rtol: float = 1e-4, atol: float = 1e-4,
                          pcoeff : float = 0.25, icoeff : float = 0.80, dcoeff : float = 0.0,
@@ -965,6 +965,9 @@ def evolve_perturbations( *, param, aexp_out, kmin : float, kmax : float, num_k 
         array of shape (num_k) containing the wavenumbers [in units 1/Mpc]
     """
     if kmodes is None:
+        assert kmin is not None
+        assert kmax is not None
+        assert num_k is not None
         if dologk:
             kmodes = jnp.geomspace(kmin, kmax, num_k)
         else:
@@ -1043,6 +1046,9 @@ def evolve_perturbations_batched( *, param, aexp_out, kmin : float, kmax : float
         array of shape (num_k) containing the wavenumbers [in units 1/Mpc]
     """
     if kmodes is None:
+        assert kmin is not None
+        assert kmax is not None
+        assert num_k is not None
         kmodes = jnp.geomspace(kmin, kmax, num_k)
     
 
