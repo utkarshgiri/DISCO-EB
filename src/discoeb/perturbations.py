@@ -1001,7 +1001,7 @@ def evolve_perturbations( *, param, aexp_out, kmin : float=None, kmax : float=No
     return y1, kmodes, param
 
 
-def evolve_perturbations_batched( *, param, aexp_out, kmin : float, kmax : float, num_k : int, kmodes=None,
+def evolve_perturbations_batched( *, param, aexp_out, kmin : float = None, kmax : float = None, num_k : int = None, kmodes=None,
                          lmaxg : int = 11, lmaxgp : int = 11, lmaxr : int = 11, lmaxnu : int = 8,
                          nqmax : int = 3, rtol: float = 1e-4, atol: float = 1e-4,
                          pcoeff : float = 0.25, icoeff : float = 0.80, dcoeff : float = 0.0,
